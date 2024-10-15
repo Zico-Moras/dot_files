@@ -10,6 +10,8 @@ else
     echo "Oh My Zsh is already installed!"
 fi
 
+rm -f ~/.zshrc
+
 # 2. Install Powerlevel10k theme
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
     echo "Installing Powerlevel10k theme..."
@@ -41,6 +43,8 @@ if command -v tmux &> /dev/null && [ -n "$TMUX" ]; then
     ~/.tmux/plugins/tpm/bin/install_plugins
     tmux source-file ~/.tmux.conf
 fi
+
+brew bundle --file=~/dot_files/brew/Brewfile
 
 echo "Setup complete!"
 

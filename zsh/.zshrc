@@ -110,6 +110,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+########################################           PATHS              #######################################
+
 export PATH="$PATH:/opt/nvim/"
 export PATH="$PATH:$HOME/.local/bin"
 
