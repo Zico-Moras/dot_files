@@ -1,5 +1,7 @@
 #!/bin/bash
 
+brew list | xargs brew uninstall --force
+
 # Function to remove stow'd dotfiles
 remove_stow() {
     echo "Removing symlinks created by stow..."

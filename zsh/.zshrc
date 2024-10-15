@@ -120,4 +120,6 @@ export PATH="$PATH:$HOME/.local/bin"
 
 bindkey -v
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+########################################           BREW              #######################################
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

@@ -20,13 +20,16 @@ else
     echo "Powerlevel10k is already installed!"
 fi
 
+
+brew bundle --file=~/dot_files/brew/Brewfile
+
 # 2. Install Tmux Plugin Manager (TPM)
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-    echo "Installing Tmux Plugin Manager..."
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-else
-    echo "TPM is already installed!"
-fi
+#if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+#    echo "Installing Tmux Plugin Manager..."
+#    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+#else
+#    echo "TPM is already installed!"
+#fi
 
 # 3. Stow dotfiles
 echo "Symlinking dotfiles with stow..."
@@ -44,7 +47,6 @@ if command -v tmux &> /dev/null && [ -n "$TMUX" ]; then
     tmux source-file ~/.tmux.conf
 fi
 
-brew bundle --file=~/dot_files/brew/Brewfile
 
 echo "Setup complete!"
 
