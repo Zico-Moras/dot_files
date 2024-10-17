@@ -11,7 +11,7 @@ return {
     ---How much of the background should be transparent.
     transparent_background_level = 2,  -- Slight transparency for UI components
     ---Whether italics should be used for keywords and more.
-    italics = true,  -- Enable italics for better text distinction
+    italics = false,  -- Enable italics for better text distinction
     ---Disable italic fonts for comments. 
     disable_italic_comments = true,  -- Make comments non-italic for readability
     ---Color of the sign column background
