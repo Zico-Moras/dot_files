@@ -112,14 +112,22 @@ source $ZSH/oh-my-zsh.sh
 
 ########################################           PATHS              #######################################
 
-export PATH="$PATH:/opt/nvim/"
+export PATH="$HOME/Applications:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/sgoinfre/brew/bin:$PATH"
+
+if [ -f "$HOME/sgoinfre/brew/bin/brew" ]; then
+	export HOMEBREW_PREFIX=~/sgoinfre/brew
+else
+    echo "Homebrew is not installed in $BREW_PATH. Setting up environment..."
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 bindkey -v
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ########################################           BREW              #######################################
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

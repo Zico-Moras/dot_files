@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "836b67f84a21deec9016253f41f994c2a98cea15"
+        "revision": "6dd24ba3e950ac272f80d9d104cd2ae763b092b7"
       }
     },
     "brew": {
@@ -156,6 +156,12 @@
         "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
         "Homebrew/homebrew-core": "api",
         "GCC": "11.4.0"
+      },
+      "Ubuntu 22.04.4 LTS (jammy)": {
+        "HOMEBREW_VERSION": "4.4.1-62-g6f17b06",
+        "HOMEBREW_PREFIX": "/sgoinfre/francima/brew",
+        "Homebrew/homebrew-core": "api",
+        "GCC": "10.5.0"
       }
     }
   }
