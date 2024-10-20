@@ -97,20 +97,24 @@ install_brew_packages() {
 install_neovim_appimage() {
     APPIMAGE_DIR="$HOME/Applications"
     APPIMAGE_NAME="nvim.appimage"
+    APPIMAGE_RENAMED="nvim"
     APPIMAGE_URL="https://github.com/neovim/neovim/releases/latest/download/$APPIMAGE_NAME"
 
     # Create Applications directory if it doesn't exist
     mkdir -p "$APPIMAGE_DIR"
 
     # Download Neovim AppImage if it doesn't exist
-    if [ ! -f "$APPIMAGE_DIR/$APPIMAGE_NAME" ]; then
+    if [ ! -f "$APPIMAGE_DIR/$APPIMAGE_RENAMED" ]; then
         echo "Downloading Neovim AppImage to $APPIMAGE_DIR..."
         curl -L -o "$APPIMAGE_DIR/$APPIMAGE_NAME" "$APPIMAGE_URL"
         chmod +x "$APPIMAGE_DIR/$APPIMAGE_NAME"  # Make it executable
+        mv "$APPIMAGE_DIR/$APPIMAGE_NAME" "$APPIMAGE_DIR/$APPIMAGE_RENAMED"  # Rename to 'nvim'
+        echo "Neovim AppImage has been renamed to 'nvim'."
     else
         echo "Neovim AppImage is already installed!"
     fi
 }
+
 
 # Function to reload Tmux environment to install plugins
 reload_tmux_plugins() {

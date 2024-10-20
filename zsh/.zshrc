@@ -119,7 +119,6 @@ export PATH="$HOME/sgoinfre/brew/bin:$PATH"
 if [ -f "$HOME/sgoinfre/brew/bin/brew" ]; then
 	export HOMEBREW_PREFIX=~/sgoinfre/brew
 else
-    echo "Homebrew is not installed in $BREW_PATH. Setting up environment..."
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
