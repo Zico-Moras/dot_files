@@ -115,6 +115,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/Applications:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/sgoinfre/brew/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 if [ -f "$HOME/sgoinfre/brew/bin/brew" ]; then
 	export HOMEBREW_PREFIX=~/sgoinfre/brew
@@ -130,3 +131,7 @@ bindkey -v
 #source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ########################################           BREW              #######################################
 
+
+alias francinette=/home/zico03/francinette/tester.sh
+
+alias paco=/home/zico03/francinette/tester.sh
