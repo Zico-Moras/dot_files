@@ -135,3 +135,6 @@ bindkey -v
 alias francinette=/home/zico03/francinette/tester.sh
 
 alias paco=/home/zico03/francinette/tester.sh
+
+########################################           ALIAS              #######################################
+alias libft='git clone git@github.com:Zico-Moras/42-libft.git'
