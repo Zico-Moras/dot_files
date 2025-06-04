@@ -76,6 +76,7 @@ install_stow() {
     else
         echo "Stow is already installed!"
     fi
+    export PATH="$HOME/.local/bin:$PATH"
     source ~/.bashrc
 }
 
