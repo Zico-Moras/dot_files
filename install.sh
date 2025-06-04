@@ -112,7 +112,6 @@ install_powerlevel10k
 install_stow
 symlink_dotfiles
 install_brew_packages
-install_neovim_appimage  # Install Neovim AppImage
 reload_tmux_plugins
 
 echo "Setup complete!"
