@@ -48,7 +48,7 @@ install_stow() {
         echo "Installing Stow from source..."
 
         # Download Stow
-        curl -O https://mirror.leitecastro.com/gnu/stow/stow-latest.tar.gz
+        curl -O https://ftp.gnu.org/gnu/stow/stow-latest.tar.gz
         tar -xzf stow-latest.tar.gz
 
         # Extract the directory name from the tarball
@@ -93,27 +93,7 @@ install_brew_packages() {
     brew bundle --file=~/dot_files/brew/Brewfile
 }
 
-# Function to install Neovim AppImage
-install_neovim_appimage() {
-    APPIMAGE_DIR="$HOME/Applications"
-    APPIMAGE_NAME="nvim.appimage"
-    APPIMAGE_RENAMED="nvim"
-    APPIMAGE_URL="https://github.com/neovim/neovim/releases/latest/download/$APPIMAGE_NAME"
 
-    # Create Applications directory if it doesn't exist
-    mkdir -p "$APPIMAGE_DIR"
-
-    # Download Neovim AppImage if it doesn't exist
-    if [ ! -f "$APPIMAGE_DIR/$APPIMAGE_RENAMED" ]; then
-        echo "Downloading Neovim AppImage to $APPIMAGE_DIR..."
-        curl -L -o "$APPIMAGE_DIR/$APPIMAGE_NAME" "$APPIMAGE_URL"
-        chmod +x "$APPIMAGE_DIR/$APPIMAGE_NAME"  # Make it executable
-        mv "$APPIMAGE_DIR/$APPIMAGE_NAME" "$APPIMAGE_DIR/$APPIMAGE_RENAMED"  # Rename to 'nvim'
-        echo "Neovim AppImage has been renamed to 'nvim'."
-    else
-        echo "Neovim AppImage is already installed!"
-    fi
-}
 
 
 # Function to reload Tmux environment to install plugins
