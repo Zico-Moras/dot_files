@@ -113,6 +113,7 @@ source $ZSH/oh-my-zsh.sh
 ########################################           PATHS              #######################################
 
 export PATH="$HOME/Applications:$PATH"
+export PATH="$HOME/AppImages:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/sgoinfre/brew/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
