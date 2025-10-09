@@ -139,3 +139,6 @@ alias paco=/home/zico03/francinette/tester.sh
 
 ########################################           ALIAS              #######################################
 alias libft='git clone git@github.com:Zico-Moras/42-libft.git'
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
