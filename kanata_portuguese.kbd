@@ -1,0 +1,184 @@
+;; =============================================================================
+;; KANATA CONFIGURATION WITH PORTUGUESE/INTERNATIONAL LAYER + SHIFT CAPS LAYER
+;; =============================================================================
+;; Double-tap RIGHT CONTROL to toggle international layer for Portuguese typing
+;; Hold SHIFT while in international layer to activate caps layer
+;; Homerow mods: A=Meta, S=Alt, D=Shift, F=Ctrl | J=Ctrl, K=Shift, L=Alt, ;=Meta
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+;; =============================================================================
+;; SOURCE LAYOUT DEFINITION
+;; =============================================================================
+(defsrc
+  esc
+  caps a s d f j k l ; home
+  q w e r t y u i o p [ ]
+  z x c v b n m , . /
+  1 2 3 4 5 6 7 8 9 0 - =
+  lsft rsft
+)
+
+;; =============================================================================
+;; TIMING VARIABLES
+;; =============================================================================
+(defvar
+  tap-time 200
+  hold-time 150
+  hold-time-slow 200 
+)
+
+;; =============================================================================
+;; ALIASES DEFINITION
+;; =============================================================================
+(defalias
+  ;; Special key behaviors
+  caps-international    (tap-dance 200 (caps (layer-switch international)))
+  caps-base    (tap-dance 200 (caps (layer-switch base)))
+  esc-tilde      (tap-hold 150 175 esc S-grave)
+  home-key       (tap-hold 150 175 del home)
+  
+  ;; Left side homerow mods (A S D F)
+  a-home         (multi f24 (tap-hold $tap-time $hold-time-slow a lmet))
+  s-home         (multi f24 (tap-hold $tap-time $hold-time-slow s lalt))
+  d-home         (multi f24 (tap-hold $tap-time $hold-time d lsft))
+  f-home         (multi f24 (tap-hold $tap-time $hold-time f lctl))
+  
+  ;; Right side homerow mods (J K L ;)
+  j-home         (multi f24 (tap-hold $tap-time $hold-time j rctl))
+  k-home         (multi f24 (tap-hold $tap-time $hold-time k rsft))
+  l-home         (multi f24 (tap-hold $tap-time $hold-time-slow l ralt))
+  semicolon-home (multi f24 (tap-hold $tap-time $hold-time-slow ; rmet))
+  
+  ;; Portuguese characters - LOWERCASE ONLY (no fork needed!)
+  pt-a-grave-low (unicode à)
+  pt-a-acute-low (unicode á)
+  pt-e-acute-low (unicode é)
+  pt-e-circum-low (unicode ê)
+  pt-c-cedilla-low (unicode ç)
+  pt-n-tilde-low (unicode ñ)
+  pt-u-acute-low (unicode ú)
+  pt-i-acute-low (unicode í)
+  pt-o-acute-low (unicode ó)
+  pt-o-tilde-low (unicode õ)
+  pt-a-circum-low (unicode â)
+  pt-a-tilde-low (unicode ã)
+  pt-e-grave-low (unicode è)
+  pt-u-diaer-low (unicode ü)
+  pt-o-circum-low (unicode ô)
+  pt-u-circum-low (unicode û)
+  pt-i-diaer-low (unicode ï)
+  
+  ;; Portuguese characters - UPPERCASE ONLY 
+  pt-a-grave-up (unicode À)
+  pt-a-acute-up (unicode Á)
+  pt-e-acute-up (unicode É)
+  pt-e-circum-up (unicode Ê)
+  pt-c-cedilla-up (unicode Ç)
+  pt-n-tilde-up (unicode Ñ)
+  pt-u-acute-up (unicode Ú)
+  pt-i-acute-up (unicode Í)
+  pt-o-acute-up (unicode Ó)
+  pt-o-tilde-up (unicode Õ)
+  pt-a-circum-up (unicode Â)
+  pt-a-tilde-up (unicode Ã)
+  pt-e-grave-up (unicode È)
+  pt-u-diaer-up (unicode Ü)
+  pt-o-circum-up (unicode Ô)
+  pt-u-circum-up (unicode Û)
+  pt-i-diaer-up (unicode Ï)
+  
+  ;; Homerow shift keys that activate caps layer when in international mode
+  d-caps (tap-hold 0 1 d (layer-while-held international-caps))
+  k-caps (tap-hold 0 1 k (layer-while-held international-caps))
+  
+  ;; Simple symbols (no shift variants)
+  sym-eszett     (unicode ß)
+  sym-inv-quest  (unicode ¿)
+  sym-left-quote (unicode «)
+  sym-right-quote (unicode »)
+  sym-inv-excl   (unicode ¡)
+  sym-euro       (unicode €)
+  sym-pound      (unicode £)
+  sym-cent       (unicode ¢)
+  sym-yen        (unicode ¥)
+  sym-section    (unicode §)
+  sym-copyright  (unicode ©)
+  sym-registered (unicode ®)
+  sym-trademark  (unicode ™)
+  sym-degree     (unicode °)
+  sym-en-dash    (unicode –)
+  sym-em-dash    (unicode —)
+)
+
+;; =============================================================================
+;; BASE LAYER (US QWERTY WITH HOMEROW MODS)
+;; =============================================================================
+(deflayer base
+  @caps-international
+  @esc-tilde @a-home @s-home @d-home @f-home @j-home @k-home @l-home @semicolon-home @home-key
+  q w e r t y u i o p [ ]
+  z x c v b n m , . /
+  1 2 3 4 5 6 7 8 9 0 - =
+  lsft rsft
+)
+
+;; =============================================================================
+;; INTERNATIONAL LAYER (PORTUGUESE + INTERNATIONAL CHARACTERS) - LOWERCASE
+;; =============================================================================
+(deflayer international
+  @caps-base  ;; ESC returns to base layer
+  XX XX XX @d-caps XX XX @k-caps XX XX XX  ;; D and K activate caps layer in international mode
+  
+  ;; TOP ROW: Portuguese vowels and consonants (LOWERCASE only)
+  @pt-a-grave-low @pt-a-acute-low @pt-e-acute-low @pt-e-circum-low @pt-c-cedilla-low @pt-n-tilde-low @pt-u-acute-low @pt-i-acute-low @pt-o-acute-low @pt-o-tilde-low @pt-a-circum-low @pt-a-tilde-low
+  
+  ;; MIDDLE ROW: Additional accented characters
+  @pt-e-grave-low @pt-u-diaer-low @pt-o-circum-low @pt-u-circum-low @pt-i-diaer-low @sym-eszett @sym-inv-quest @sym-left-quote @sym-right-quote @sym-inv-excl
+  
+  ;; NUMBER ROW: International symbols
+  @sym-inv-excl @sym-euro @sym-pound @sym-cent @sym-yen @sym-section @sym-copyright @sym-registered @sym-trademark @sym-degree @sym-en-dash @sym-em-dash
+  
+  ;; SHIFT KEYS: Normal shift behavior in international layer
+  lsft rsft
+)
+
+;; =============================================================================
+;; INTERNATIONAL CAPS LAYER (ACTIVATED BY HOLDING SHIFT) - UPPERCASE ONLY
+;; =============================================================================
+(deflayer international-caps
+  @caps-base  ;; ESC returns to base layer
+  XX XX XX _ XX XX _ XX XX XX  ;; Keep D and K transparent for caps activation
+  
+  ;; TOP ROW: Portuguese vowels and consonants (UPPERCASE only)
+  @pt-a-grave-up @pt-a-acute-up @pt-e-acute-up @pt-e-circum-up @pt-c-cedilla-up @pt-n-tilde-up @pt-u-acute-up @pt-i-acute-up @pt-o-acute-up @pt-o-tilde-up @pt-a-circum-up @pt-a-tilde-up
+  
+  ;; MIDDLE ROW: Additional accented characters (uppercase)
+  @pt-e-grave-up @pt-u-diaer-up @pt-o-circum-up @pt-u-circum-up @pt-i-diaer-up _ _ _ _ _
+  
+  ;; NUMBER ROW: Same symbols (no uppercase variants)
+  @sym-inv-excl @sym-euro @sym-pound @sym-cent @sym-yen @sym-section @sym-copyright @sym-registered @sym-trademark @sym-degree @sym-en-dash @sym-em-dash
+  
+  ;; SHIFT KEYS: Transparent to allow layer switching
+  _ _
+)
+
+;; =============================================================================
+;; CHARACTER REFERENCE FOR PORTUGUESE
+;; =============================================================================
+;; INTERNATIONAL LAYER (lowercase):
+;; Q→à  W→á  E→é  R→ê  T→ç  Y→ñ  U→ú  I→í  O→ó  P→õ  [→â  ]→ã
+;; Z→è  X→ü  C→ô  V→û  B→ï  N→ß  M→¿  ,→«  .→»  /→¡
+;;
+;; INTERNATIONAL-CAPS LAYER (uppercase - activated by holding D or K):
+;; Q→À  W→Á  E→É  R→Ê  T→Ç  Y→Ñ  U→Ú  I→Í  O→Ó  P→Õ  [→Â  ]→Ã
+;; Z→È  X→Ü  C→Ô  V→Û  B→Ï
+;;
+;; USAGE:
+;; 1. Double-tap CAPS LOCK to SWITCH to international mode
+;; 2. Type letters to get lowercase accented versions (e.g., W = á, E = é, T = ç)
+;; 3. HOLD D or K (homerow shift) + letter to get uppercase accented versions (e.g., Hold D+W = Á)
+;; 4. Double-tap CAPS LOCK again or press ESC to switch back to base layer
+;; =============================================================================
