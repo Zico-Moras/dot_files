@@ -4,7 +4,8 @@
 
 (defsrc
   esc
-  caps a s d f j k l ; home
+  caps a s d f h j k l ; home
+  lalt
 )
 (defvar
   tap-time 200
@@ -25,12 +26,21 @@
   d (multi f24 (tap-hold $tap-time $hold-time d lsft))
   f (multi f24 (tap-hold $tap-time $hold-time f lctl))
   j (multi f24 (tap-hold $tap-time $hold-time j rctl))
+  h h
   k (multi f24 (tap-hold $tap-time $hold-time k rsft))
   l (multi f24 (tap-hold $tap-time $hold-time-slow l ralt))
   ; (multi f24 (tap-hold $tap-time $hold-time-slow ; rmet))
+  lalt-arrows(tap-dance 200(lalt (layer-while-held arrows)))
 )
 
 (deflayer base
   @caps-to-esc
-  @esc-tilde @a @s @d @f @j @k @l @; @home
+  @esc-tilde @a @s @d @f @h @j @k @l @; @home
+  @lalt-arrows
+)
+
+(deflayer arrows
+  @caps-to-esc
+  @esc-tilde @a @s @d @f left down up right @; @home
+  @lalt-arrows
 )
