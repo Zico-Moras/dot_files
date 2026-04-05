@@ -18,20 +18,23 @@
   caps-to-esc (tap-hold 150 175 caps caps)
   esc-tilde (tap-hold 150 175 esc S-grave)
 
-
-
   home (tap-hold 150 175 del home)
-  a (multi f24 (tap-hold $tap-time $hold-time-slow a lmet))
-  s (multi f24 (tap-hold $tap-time $hold-time-slow s lalt))
-  d (multi f24 (tap-hold $tap-time $hold-time d lsft))
-  f (multi f24 (tap-hold $tap-time $hold-time f lctl))
-  j (multi f24 (tap-hold $tap-time $hold-time j rctl))
+  
+  ;; Removed the (multi f24 ...) wrappers below:
+  a (tap-hold $tap-time $hold-time-slow a lmet)
+  s (tap-hold $tap-time $hold-time-slow s lalt)
+  d (tap-hold $tap-time $hold-time d lsft)
+  f (tap-hold $tap-time $hold-time f lctl)
+  
+  j (tap-hold $tap-time $hold-time j rctl)
   h h
-  k (multi f24 (tap-hold $tap-time $hold-time k rsft))
-  l (multi f24 (tap-hold $tap-time $hold-time-slow l ralt))
-  ; (multi f24 (tap-hold $tap-time $hold-time-slow ; rmet))
-  lalt-arrows(tap-dance 200(lalt (layer-while-held arrows)))
+  k (tap-hold $tap-time $hold-time k rsft)
+  l (tap-hold $tap-time $hold-time-slow l ralt)
+  ; (tap-hold $tap-time $hold-time-slow ; rmet)
+  
+  lalt-arrows (tap-dance 200 (lalt (layer-while-held arrows)))
 )
+
 
 (deflayer base
   @caps-to-esc
